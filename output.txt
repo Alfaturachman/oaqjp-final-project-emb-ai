@@ -1,0 +1,59 @@
+3.
+user@cloud-ide-terminal:~/project-root$ python3
+Python 3.10.12 (default, Jun 11 2023, 05:26:28) 
+[GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from EmotionDetection.emotion_detection import emotion_detector
+>>> emotion_detector("I am glad this robot is working")
+{'anger': 0.0, 'disgust': 0.0, 'fear': 0.0, 'joy': 0.95, 'sadness': 0.0, 'dominant_emotion': 'joy'}
+>>>
+
+5.
+user@cloud-ide-terminal:~/project-root$ python3
+Python 3.10.12 (default, Jun 11 2023, 05:26:28) 
+[GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from EmotionDetection.emotion_detection import emotion_detector
+>>> emotion_detector("I love days like this")
+{'anger': 0.01, 'disgust': 0.002, 'fear': 0.005, 'joy': 0.97, 'sadness': 0.012, 'dominant_emotion': 'joy'}
+>>>
+
+7.
+user@cloud-ide-terminal:~/project-root$ python3
+Python 3.10.12 (default, Jun 11 2023, 05:26:28) 
+[GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from EmotionDetection.emotion_detection import emotion_detector
+>>> emotion_detector("I am so angry and furious about this!")
+{'anger': 0.92, 'disgust': 0.02, 'fear': 0.01, 'joy': 0.0, 'sadness': 0.05, 'dominant_emotion': 'anger'}
+>>>
+
+9.
+user@cloud-ide-terminal:~/project-root$ python3 -m unittest test_emotion_detection.py
+test_anger_statement (tests.test_emotion_detection.TestEmotionDetector)
+'I am really mad about this' should produce anger as dominant. ... ok
+test_blank_input_returns_none (tests.test_emotion_detection.TestEmotionDetector)
+Blank input should return None for all fields. ... ok
+test_disgust_statement (tests.test_emotion_detection.TestEmotionDetector)
+'I feel disgusted just hearing about this' should produce disgust. ... ok
+test_fear_statement (tests.test_emotion_detection.TestEmotionDetector)
+'I am really afraid that this will happen' should produce fear. ... ok
+test_joy_statement (tests.test_emotion_detection.TestEmotionDetector)
+'I am glad this happened' should produce joy as dominant. ... ok
+test_return_keys_present (tests.test_emotion_detection.TestEmotionDetector)
+Result must contain all required keys. ... ok
+test_sadness_statement (tests.test_emotion_detection.TestEmotionDetector)
+'I am so sad about this' should produce sadness as dominant. ... ok
+test_scores_are_floats (tests.test_emotion_detection.TestEmotionDetector)
+Non-blank input must return float scores. ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 4.852s
+
+OK
+
+16.
+user@cloud-ide-terminal:~/project-root$ pylint server.py
+
+------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)

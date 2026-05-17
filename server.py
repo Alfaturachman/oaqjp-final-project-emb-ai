@@ -4,9 +4,6 @@ Emotion Detector – Flask Web Server
 Exposes two routes:
   GET  /           → renders the web UI (index.html)
   GET  /emotionDetector → calls emotion_detector and returns a plain-text result
-
-Author  : Your Name
-Version : 1.0.0
 """
 
 from flask import Flask, request, render_template

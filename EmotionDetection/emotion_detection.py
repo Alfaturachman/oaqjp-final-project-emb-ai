@@ -3,13 +3,9 @@ Emotion Detection Module
 ========================
 Uses IBM Watson NLP Library (via Watson NLP REST API) to analyze
 text and return emotion scores (anger, disgust, fear, joy, sadness).
-
-Author  : Your Name
-Version : 1.0.0
 """
 
 import requests
-import json
 
 
 def emotion_detector(text_to_analyse: str) -> dict:

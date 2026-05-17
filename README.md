@@ -1,7 +1,8 @@
-# Emotion Detector
+# oaqjp-final-project-emb-ai
 
-> **AI-based Web Application** menggunakan IBM Watson NLP Library untuk mendeteksi emosi dari teks secara real-time.
-> Final Project – IBM Developer Skills Network (AI/ML Engineering Track)
+## Final Project - Emotion Detector
+
+An AI-based web application that detects emotions in text using the **Watson NLP Embed library**.
 
 ---
 
@@ -72,14 +73,14 @@ Browser / Client
 
 ## Tech Stack
 
-| Komponen | Teknologi | Versi |
-|----------|-----------|-------|
-| Language | Python | 3.10+ |
-| Web Framework | Flask | 2.3+ |
-| HTTP Client | Requests | 2.31+ |
-| AI/NLP API | IBM Watson NLP | Cloud Endpoint |
-| Testing | unittest / pytest | built-in / 7.4+ |
-| Static Analysis | Pylint | 3.0+ |
+| Komponen        | Teknologi         | Versi           |
+| --------------- | ----------------- | --------------- |
+| Language        | Python            | 3.10+           |
+| Web Framework   | Flask             | 2.3+            |
+| HTTP Client     | Requests          | 2.31+           |
+| AI/NLP API      | IBM Watson NLP    | Cloud Endpoint  |
+| Testing         | unittest / pytest | built-in / 7.4+ |
+| Static Analysis | Pylint            | 3.0+            |
 
 ---
 
@@ -152,6 +153,7 @@ pip install -r requirements.txt
 ```
 
 Output yang diharapkan:
+
 ```
 Successfully installed flask-2.3.x requests-2.31.x pylint-3.0.x pytest-7.4.x
 ```
@@ -322,6 +324,7 @@ python3
 ```
 
 Output yang diharapkan:
+
 ```python
 {
   'anger': 0.0058, 'disgust': 0.0047, 'fear': 0.0052,
@@ -337,6 +340,7 @@ Output yang diharapkan:
 ### Penjelasan
 
 Fungsi `emotion_detector()` sudah diformat untuk mengembalikan dictionary dengan 6 key:
+
 - `anger`, `disgust`, `fear`, `joy`, `sadness` → nilai float antara 0 dan 1
 - `dominant_emotion` → string nama emosi dengan skor tertinggi
 
@@ -413,6 +417,7 @@ disgust
 ```
 
 Atau dengan cara lebih formal:
+
 ```bash
 python3 -c "
 import EmotionDetection
@@ -423,6 +428,7 @@ print('Exports:', EmotionDetection.__all__)
 ```
 
 Output:
+
 ```
 Package loaded: <module 'EmotionDetection' from '.../EmotionDetection/__init__.py'>
 Version: 1.0.0
@@ -511,6 +517,7 @@ python -m unittest tests/test_emotion_detection.py -v
 ```
 
 Output yang diharapkan:
+
 ```
 tests/test_emotion_detection.py::TestEmotionDetector::test_anger_statement PASSED
 tests/test_emotion_detection.py::TestEmotionDetector::test_blank_input_returns_none PASSED
@@ -591,6 +598,7 @@ python server.py
 ```
 
 Output terminal:
+
 ```
  * Serving Flask app 'Emotion Detector'
  * Debug mode: off
@@ -604,15 +612,18 @@ Press CTRL+C to quit
 ### Test Deployment
 
 Buka browser dan akses:
+
 - **UI**: `http://localhost:5000/`
 - **API langsung**: `http://localhost:5000/emotionDetector?textToAnalyze=I+am+so+happy`
 
 Atau via curl:
+
 ```bash
 curl "http://localhost:5000/emotionDetector?textToAnalyze=I+am+so+happy+today"
 ```
 
 Output:
+
 ```
 For the given statement, the system response is 'anger': 0.0058, 'disgust': 0.0047,
 'fear': 0.0052, 'joy': 0.9651 and 'sadness': 0.0191. The dominant emotion is joy.
@@ -696,6 +707,7 @@ pylint server.py EmotionDetection/emotion_detection.py
 ### Target: Skor 10/10
 
 Untuk mendapatkan skor sempurna, pastikan kode memenuhi standar:
+
 - Semua fungsi memiliki docstring
 - Nama variabel dan fungsi mengikuti konvensi PEP 8
 - Tidak ada baris yang terlalu panjang (>100 karakter per `.pylintrc`)
@@ -712,6 +724,7 @@ Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 ### Tips Memperbaiki Skor Pylint
 
 Jika skor belum sempurna, jalankan:
+
 ```bash
 # Lihat detail warning/error
 pylint server.py --output-format=text
@@ -723,12 +736,12 @@ autopep8 --in-place --aggressive server.py
 
 Masalah umum dan solusinya:
 
-| Warning Pylint | Solusi |
-|----------------|--------|
-| `C0116: Missing function or method docstring` | Tambahkan docstring ke setiap fungsi |
-| `C0301: Line too long` | Potong baris menjadi <100 karakter |
-| `W0611: Unused import` | Hapus import yang tidak digunakan |
-| `C0103: Variable name doesn't conform to snake_case` | Ganti nama variabel ke snake_case |
+| Warning Pylint                                       | Solusi                               |
+| ---------------------------------------------------- | ------------------------------------ |
+| `C0116: Missing function or method docstring`        | Tambahkan docstring ke setiap fungsi |
+| `C0301: Line too long`                               | Potong baris menjadi <100 karakter   |
+| `W0611: Unused import`                               | Hapus import yang tidak digunakan    |
+| `C0103: Variable name doesn't conform to snake_case` | Ganti nama variabel ke snake_case    |
 
 ---
 
@@ -782,22 +795,25 @@ Menganalisis teks dan mengembalikan skor emosi dalam format plain-text.
 
 **Query Parameters:**
 
-| Parameter | Tipe | Wajib | Deskripsi |
-|-----------|------|-------|-----------|
-| `textToAnalyze` | string | Ya | Teks yang akan dianalisis |
+| Parameter       | Tipe   | Wajib | Deskripsi                 |
+| --------------- | ------ | ----- | ------------------------- |
+| `textToAnalyze` | string | Ya    | Teks yang akan dianalisis |
 
 **Contoh Request:**
+
 ```
 GET /emotionDetector?textToAnalyze=I+am+so+happy+today
 ```
 
 **Contoh Response (200 OK):**
+
 ```
 For the given statement, the system response is 'anger': 0.0058, 'disgust': 0.0047,
 'fear': 0.0052, 'joy': 0.9651 and 'sadness': 0.0191. The dominant emotion is joy.
 ```
 
 **Error Response (input kosong):**
+
 ```
 Invalid text! Please try again.
 ```
@@ -813,38 +829,41 @@ Menampilkan antarmuka web utama (HTML/CSS/JS).
 ## Contoh Output
 
 ### Input: "I am so happy today!"
+
 ```json
 {
-  "anger":   0.0058,
-  "disgust": 0.0047,
-  "fear":    0.0052,
-  "joy":     0.9651,
-  "sadness": 0.0191,
-  "dominant_emotion": "joy"
+    "anger": 0.0058,
+    "disgust": 0.0047,
+    "fear": 0.0052,
+    "joy": 0.9651,
+    "sadness": 0.0191,
+    "dominant_emotion": "joy"
 }
 ```
 
 ### Input: "I am really mad about this!"
+
 ```json
 {
-  "anger":   0.7423,
-  "disgust": 0.1049,
-  "fear":    0.0852,
-  "joy":     0.0301,
-  "sadness": 0.0374,
-  "dominant_emotion": "anger"
+    "anger": 0.7423,
+    "disgust": 0.1049,
+    "fear": 0.0852,
+    "joy": 0.0301,
+    "sadness": 0.0374,
+    "dominant_emotion": "anger"
 }
 ```
 
 ### Input: "" (kosong)
+
 ```json
 {
-  "anger":   null,
-  "disgust": null,
-  "fear":    null,
-  "joy":     null,
-  "sadness": null,
-  "dominant_emotion": null
+    "anger": null,
+    "disgust": null,
+    "fear": null,
+    "joy": null,
+    "sadness": null,
+    "dominant_emotion": null
 }
 ```
 
@@ -899,31 +918,10 @@ pylint server.py --output-format=colorized
 
 ---
 
-## Checklist Final Submission
-
-- [ ] Task 1: Repository URL GitHub dengan README.md
-- [ ] Task 2a: Kode `emotion_detection.py` (fungsi awal)
-- [ ] Task 2b: Terminal output import + test berhasil
-- [ ] Task 3a: Kode `emotion_detection.py` (output terformat)
-- [ ] Task 3b: Terminal output format akurat
-- [ ] Task 4a: URL `__init__.py` di GitHub
-- [ ] Task 4b: Terminal output validasi package
-- [ ] Task 5a: Kode `test_emotion_detection.py`
-- [ ] Task 5b: Terminal output semua unit test passed
-- [ ] Task 6a: Kode `server.py`
-- [ ] Task 6b: Screenshot `6b_deployment_test.png`
-- [ ] Task 7a: Kode `emotion_detection.py` (error handling 400)
-- [ ] Task 7b: Kode `server.py` (blank input handling)
-- [ ] Task 7c: Screenshot `7c_error_handling_interface.png`
-- [ ] Task 8a: Kode `server.py` (siap untuk pylint)
-- [ ] Task 8b: Terminal output pylint skor 10/10
-
----
-
 ## Lisensi
 
-Project ini dibuat untuk keperluan akademik sebagai bagian dari **IBM Developer Skills Network – AI/ML Engineering Track**.
+This project is licensed under the MIT License - see the LICENSE file for details
 
 ---
 
-*Dibuat dengan ❤️ menggunakan Python, Flask, dan IBM Watson NLP*
+_This project is for educational purposes only._
